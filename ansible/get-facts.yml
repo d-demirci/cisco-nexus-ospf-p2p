@@ -1,0 +1,16 @@
+---
+- name: facts for switches
+  hosts: switch
+
+  tasks:
+    - name: gather facts
+      nxos_facts:
+
+    - name: display facts
+      debug:
+        msg:
+          - "Model: {{ ansible_net_model}}"
+          - "Version: {{ ansible_net_version }}"
+          - "Transport: {{ ansible_net_api }}"
+          - "Neighbors: {{ ansible_net_neighbors }}"
+...

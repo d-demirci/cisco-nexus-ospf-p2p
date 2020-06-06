@@ -1,0 +1,7 @@
+{% for iface in l3_interfaces %}
+  {% if iface.name | regex_search('^Ethernet') %}
+!
+interface {{ iface.name }}
+  mac-address {{ ansible_net_interfaces[iface.name]['macaddress'] }}
+  {% endif %}
+{% endfor %}

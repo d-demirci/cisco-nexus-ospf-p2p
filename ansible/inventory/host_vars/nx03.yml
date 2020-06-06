@@ -1,0 +1,16 @@
+---
+ospf: yes
+l3_interfaces:
+  - name: loopback0
+    ipv4: 192.0.2.3/32
+    ospf_net: point-to-point
+    ospf_area: 0.0.0.0
+  - name: Ethernet1/1
+    ipv4: 10.0.13.2/30
+    ospf_net: point-to-point
+    ospf_area: 0.0.0.0
+  - name: Ethernet1/2
+    ipv4: 10.0.23.2/30
+    ospf_net: point-to-point
+    ospf_area: 0.0.0.0
+...

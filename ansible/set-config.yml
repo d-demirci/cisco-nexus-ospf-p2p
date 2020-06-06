@@ -1,0 +1,56 @@
+---
+- name: configure switches
+  hosts: switch
+
+  tasks:
+    - name: gather interface facts
+      nxos_facts:
+        gather_subset: interfaces
+
+    - name: set hostname
+      nxos_system:
+        hostname: "{{ inventory_hostname }}"
+
+    - name: set ethernet interfaces to l3
+      nxos_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            mode: layer3
+            enabled: yes
+      loop: "{{ l3_interfaces | selectattr('name', 'match', '^Ethernet') | list }}"
+
+    - name: set l3 addresses
+      nxos_l3_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            ipv4: 
+              - address: "{{ item.ipv4 }}"
+      loop: "{{ l3_interfaces }}"
+
+    - name: set mac addresses for ethernet interfaces
+      nxos_config:
+        src: templates/eth_mac_addr.j2
+
+    - block:
+      - name: enable ospf feature
+        nxos_feature:
+          feature: ospf
+          state: enabled
+
+      - name: configure ospf (system)
+        nxos_ospf:
+          ospf: "{{ ospf_pid }}"
+
+      - name: configure ospf (interfaces)
+        nxos_interface_ospf:
+          interface: "{{ item.name }}"
+          ospf: "{{ ospf_pid }}"
+          area: "{{ item.ospf_area }}"
+          network: "{{ item.ospf_net }}"
+        loop: "{{ l3_interfaces }}"
+      when: ospf is defined and (ospf | bool)
+
+    - name: save running-config to startup-config (when modified)
+      nxos_config:
+        save_when: modified
+...
