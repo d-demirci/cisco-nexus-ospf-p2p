@@ -31,9 +31,9 @@ $ <b>virsh net-dumpxml vagrant-libvirt</b>
   &lt;ip address='192.168.121.1' netmask='255.255.255.0'&gt;
     &lt;dhcp&gt;
       &lt;range start='192.168.121.1' end='192.168.121.254'/&gt;
-      &lt;host mac='<b>44:39:39:00:00:31</b>' ip='<b>192.168.121.31</b>'/&gt;
-      &lt;host mac='<b>44:39:39:00:00:32</b>' ip='<b>192.168.121.32</b>'/&gt;
-      &lt;host mac='<b>44:39:39:00:00:33</b>' ip='<b>192.168.121.33</b>'/&gt;
+      &lt;host mac='<b>52:54:00:00:00:31</b>' ip='<b>192.168.121.31</b>'/&gt;
+      &lt;host mac='<b>52:54:00:00:00:32</b>' ip='<b>192.168.121.32</b>'/&gt;
+      &lt;host mac='<b>52:54:00:00:00:33</b>' ip='<b>192.168.121.33</b>'/&gt;
     &lt;/dhcp&gt;
   &lt;/ip&gt;
 &lt;/network&gt;
