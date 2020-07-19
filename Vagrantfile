@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
     lv.suspend_mode = "managedsave"
   end
 
-  config.vm.box = "cisco-nexus9300v-9.3.4"
+  config.vm.box = "cisco-nexus9300v"
 
   config.vm.define "nx01" do |node|
     node.vm.provider :libvirt do |domain|
