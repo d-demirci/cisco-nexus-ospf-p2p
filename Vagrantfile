@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "nx01" do |node|
     node.vm.provider :libvirt do |domain|
       # mgmt_ip: 192.168.121.31
-      domain.management_network_mac = "52:54:00:00:00:31"
+      domain.management_network_mac = "52:54:00:4f:ae:45"
       domain.qemuargs :value => "-serial"
       domain.qemuargs :value => "telnet:127.0.0.1:52001,server,nowait"
     end
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "nx02" do |node|
     node.vm.provider :libvirt do |domain|
       # mgmt_ip: 192.168.121.32
-      domain.management_network_mac = "52:54:00:00:00:32"
+      domain.management_network_mac = "52:54:00:4a:f1:ca"
       domain.qemuargs :value => "-serial"
       domain.qemuargs :value => "telnet:127.0.0.1:52002,server,nowait"
     end
@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "nx03" do |node|
     node.vm.provider :libvirt do |domain|
       # mgmt_ip: 192.168.121.33
-      domain.management_network_mac = "52:54:00:00:00:33"
+      domain.management_network_mac = "52:54:00:38:33:22"
       domain.qemuargs :value => "-serial"
       domain.qemuargs :value => "telnet:127.0.0.1:52003,server,nowait"
     end
